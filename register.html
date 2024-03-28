@@ -15,8 +15,8 @@
     <label for="email"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" id="user" required/>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" id="psw" required/>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="psw" required/>
     
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"/> Remember me
@@ -33,40 +33,33 @@
 
 <script>
     let host = "http://localhost:8081";
-    let u = document.getElementById("user").value;
-    let e = document.getElementById("email").value;
-    let p = document.getElementById("psw").value;
-
-    let customer = {username : u, password : p, email : e};
     
     async function signUp() {
-        
-        console.log(u);
-        console.log(e);
-        console.log(p);
+      let u = document.getElementById("user").value;
+      let e = document.getElementById("email").value;
+      let p = document.getElementById("psw").value;
 
-        alert(u);
-        alert(e);
-        alert(p);
+      let customer = {username : u, password : p, email : e};
 
-        let request = {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(customer)
-        };
+      let request = {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(customer)
+      };
 
-        let response = await fetch(host + "/signup", request);
+      let response = await fetch(host + "/signup", request);
 
-        if (response.status == 200) {
-            message = "All good"
-            window.location.href("login.html");
-        } 
-        else {
-            console.log(response);
-            message = "Something went wrong! Customer data could not be saved.";
-        }
-        console.log(message);
-        alert(message)
+      if (response.status == 200) {
+          message = "All good"
+          window.location.href = "login.html";
+      } 
+      else {
+          console.log(response);
+          message = "Something went wrong! Customer data could not be saved.";
+          alert(message);
+      }
+      console.log(message);
+      alert(message)
     }
 </script>
 
