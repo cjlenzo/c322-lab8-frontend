@@ -12,6 +12,7 @@
       <li><a href="add.html">Add ducks</a></li>        
       <li><a href="search.html">Search ducks</a></li>
       <li><a href="pond.html">Pond</a></li>
+      <li class = "right"><a href = "login.html"></a></li>
     </ul>
     <labe>Type:</labe>
     <input id="type" />
@@ -31,7 +32,7 @@
       let ducks = [];
 
       async function getAll() {
-        let host = "http://localhost:8080";
+        let host = "http://localhost:8081";
         return fetch(host + "/ducks")
           .then((response) => response.json())
           .catch((error) => {
